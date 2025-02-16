@@ -54,7 +54,7 @@ elif [ "$1x" = "x" ]; then
       CONNECT=1
       echo "IP/Hostname of the server you want to connect to?"
       read IPXSERVER 
-      echo "UDP Port Number? [213]"
+      echo "UDP Port Number? [2130]"
       read IPXPORT
     fi
   fi
@@ -82,16 +82,17 @@ elif [ "$CONNECT" = "1" ]; then
     exit 1;
   fi
   if [ "${IPXPORT}x" = "x" ]; then
-    IPXPORT=213;
+    IPXPORT=2130;
   fi
 fi
 
 # build dosbox.conf
 echo -n "" > Data/dosbox.conf
-#echo "
-#[cpu]
-#cputype=dynamic
-#"  >> Data/dosbox.conf
+echo "
+[cpu]
+cputype=pentium_slow
+cycles=54815
+"  >> Data/dosbox.conf
 if [ "$IPX" = "1" ]; then
   echo "
 [ipx]
